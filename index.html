@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GENITUS Stack — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f7fb;--surface:#ffffff;--border:#d9e2ec;--accent:#0e7490;--gold:#b45309;--green:#15803d;--red:#b91c1c;--muted:#52606d;--text:#1e293b;--bright:#0f172a;--mono:'Space Mono',monospace;--sans:'Rajdhani',sans-serif;}
+  :root.dark-theme{--bg:#080c10;--surface:#0d1117;--border:#1e2d3d;--accent:#00d4ff;--gold:#f0c040;--green:#00ff88;--red:#ff3b5c;--muted:#7d92a8;--text:#c8d8e8;--bright:#ffffff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;min-height:100vh;transition:background .25s,color .25s;}
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:200;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:32px;height:32px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;color:var(--accent);}
+  .logo-text{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--bright);}
+  .logo-sub{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--muted);display:block;margin-top:1px;}
+  #themeToggleBtn{background:none;border:1px solid var(--border);color:var(--accent);width:30px;height:30px;border-radius:2px;cursor:pointer;font-size:14px;}
+  .main{max-width:900px;margin:0 auto;padding:40px 24px 60px;}
+  .asof{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px;}
+  h1{font-size:30px;font-weight:700;color:var(--bright);margin-bottom:18px;line-height:1.25;}
+  .lead{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:30px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:6px;}
+  .lead b{color:var(--accent);}
+  h2{font-family:var(--mono);font-size:14px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--border);}
+  p{color:var(--text);font-size:14.5px;line-height:1.7;margin-bottom:12px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);background:var(--bg);}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+  tr:last-child td{border-bottom:none;}
+  tr.total td{font-weight:700;background:var(--bg);}
+  .num{font-family:var(--mono);white-space:nowrap;}
+  .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:6px;}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);line-height:1.7;}
+  @media(max-width:700px){
+    table{font-size:11.5px;}
+    th,td{padding:7px 8px;}
+    h1{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><div class="logo-mark">Δ</div><div><span class="logo-text">GENITUS</span><span class="logo-sub">CASE STUDY</span></div></div>
+  <button id="themeToggleBtn" title="Toggle theme">🌙</button>
+</header>
+<div class="main">
+  <div class="asof">Stand: 30. September 2026</div>
+  <h1>GENITUS Stack — Case Study: 1-Tages-Build vs. klassisches Team</h1>
+  <div class="lead">In einem einzigen Arbeitstag (~10 Stunden) entstand aus einem bereits vorhandenen Ticker-Terminal ein kompletter <b>17-Tool-Finanzanalyse-Stack</b> mit eigener Daten-Infrastruktur. Eine vergleichbare menschliche Umsetzung hätte nach der Schätzung unten <b>475–630 Personenstunden</b> und <b>40.000–50.000 €</b> gekostet.</div>
+
+  <h2>Was heute entstanden ist</h2>
+  <table>
+    <thead><tr><th>Tool</th><th>Kategorie</th><th>Kernfunktion</th></tr></thead>
+    <tbody>
+      <tr><td>Ticker Terminal</td><td>Basis (bereits vorhanden)</td><td>83-Börsen Live-Kurs- und Dividenden-Terminal, 233K-Symbol-Cache</td></tr>
+      <tr><td>Dividend Terminal</td><td>Analyse</td><td>Verzeichnis bestätigter Dividendenzahler, sortiert nach Yield</td></tr>
+      <tr><td>Dividend Analysis</td><td>Analyse</td><td>Yield-Band Z-Score, Yield-on-Cost-Rechner</td></tr>
+      <tr><td>Dividend Deep</td><td>Analyse</td><td>Portfolio-Aggregator, DRIP-Simulator, Saisonalität</td></tr>
+      <tr><td>Institutional Screener</td><td>Analyse</td><td>Multi-Faktor Dividend Quality Score (4 Sub-Scores)</td></tr>
+      <tr><td>Risk Metrics</td><td>Analyse</td><td>Volatilitäts-/Drawdown-Proxy aus Dividendenkurs-Historie</td></tr>
+      <tr><td>Live Risk (Yahoo)</td><td>Analyse, Live</td><td>Echte Sharpe/Sortino/VaR/Max-Drawdown</td></tr>
+      <tr><td>Growth Screener</td><td>Analyse</td><td>Chowder Number, Cut-Risk-Flags, Perzentil-Rang</td></tr>
+      <tr><td>Correlation Matrix</td><td>Analyse</td><td>Watchlist-Diversifikations-Check</td></tr>
+      <tr><td>Income Goal / Fact Sheet / Compare</td><td>Kundenberatung</td><td>3 Verkaufstools: Rückwärtsrechnung Zielrente, druckbares One-Pager, 2-Aktien-Vergleich</td></tr>
+      <tr><td>Bilanz-Terminal (Live)</td><td>Fundamentaldaten, Live</td><td>Echtzeit-Bilanzanalyse + Health-Score, S&amp;P 500 + DAX</td></tr>
+      <tr><td>Bilanz-Terminal (Cached) + Batch-Infra</td><td>Fundamentaldaten</td><td>Gleiche Analyse ohne Live-Calls, erweitert auf 21 Welt-Indizes / 1.447 Firmen</td></tr>
+      <tr><td>Bilanz-Screener</td><td>Fundamentaldaten</td><td>Sortierbare Kennzahlen- und Score-Tabelle über 21 Indizes</td></tr>
+      <tr><td>Sektor-Heatmap</td><td>Fundamentaldaten</td><td>Ländervergleich von Bewertung und Gesundheit nach Sektor</td></tr>
+      <tr><td>Score vs. Performance</td><td>Quant</td><td>Korrelation Health-Score ↔ 5-Jahres-Gesamtrendite, ~1.424 Firmen</td></tr>
+      <tr><td>Macro / Yield-Curve</td><td>Makro</td><td>Zinskurve, Spreads, Bond-ETFs, FX, Rohstoffe</td></tr>
+      <tr><td>Workshell (PWA)</td><td>Infrastruktur</td><td>Vereinheitlichte Tab-Oberfläche für alle 16 Tools</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Dazu die zugrunde liegende Daten-Infrastruktur: ein 233K-Zeilen Ticker-Cache über 83 Börsen, ein Dividenden-Cache mit über 60.000 bestätigten Zahlern und 1 Mio.+ Einzelzahlungen, ein Financials-Batch über 1.447 Firmen in 21 Länder-Indizes und eine 5-Jahres-Kurshistorie für 1.424 Firmen — aufgebaut per resumable Batch-Skripten mit Circuit-Breaker und Wikipedia-Scraping für die Index-Konstituenten.</p>
+
+  <h2>Aufwandsschätzung nach Rolle</h2>
+  <p class="note">Basierend auf typischen Projektlaufzeiten für vergleichbare Einzelkomponenten (ein poliertes Analyse-Dashboard: 3–5 Personentage; eine produktionsreife Batch-Pipeline mit Resume-Logik: 1–2 Personenwochen).</p>
+  <table>
+    <thead><tr><th>Rolle</th><th>Aufgaben</th><th>Std.</th></tr></thead>
+    <tbody>
+      <tr><td>Data Engineer</td><td>83-Börsen Ticker-Cache, Dividenden-Scan (60.000+ Zahler über mehrere Gap-Fill-Runden), Financials-Batch (1.447 Firmen × 21 Indizes), 5-Jahres-Kurshistorie (1.424 Firmen), 21 Wikipedia-Index-Scraper inkl. Datenbereinigung</td><td class="num">140–180</td></tr>
+      <tr><td>Quant-/Fintech-Entwickler</td><td>Portierung Sharpe/Sortino/VaR/Drawdown, Health-Score (5 gewichtete Sub-Scores), Dividend-Quality-Score, Chowder Number, DRIP-Simulation, Pearson-Korrelation, Breakeven-Proxy</td><td class="num">70–100</td></tr>
+      <tr><td>Frontend-/Product-Entwickler</td><td>17 eigenständige, responsive Single-Page-Tools mit Charts, Sortier-Tabellen, Dark/Light-Theme, PWA-Workshell</td><td class="num">220–280</td></tr>
+      <tr><td>QA / Datenqualität</td><td>Verifikation aller Kennzahlen gegen reale Marktdaten, Aufdeckung der 6 Bugs unten</td><td class="num">25–40</td></tr>
+      <tr><td>Deployment, Doku, Kuratierung</td><td>17 Repositories + Hosting, Navigation, Datenfluss-Dokumentation</td><td class="num">20–30</td></tr>
+      <tr class="total"><td colspan="2">Summe</td><td class="num">475–630 Std.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Kostenvergleich &amp; Zeitrahmen</h2>
+  <table>
+    <thead><tr><th>Rolle</th><th>Std. (Mittelwert)</th><th>Satz (€/Std.)</th><th>Kosten</th></tr></thead>
+    <tbody>
+      <tr><td>Data Engineer</td><td class="num">160</td><td class="num">85</td><td class="num">13.600 €</td></tr>
+      <tr><td>Quant-/Fintech-Entwickler</td><td class="num">85</td><td class="num">110</td><td class="num">9.350 €</td></tr>
+      <tr><td>Frontend-/Product-Entwickler</td><td class="num">250</td><td class="num">75</td><td class="num">18.750 €</td></tr>
+      <tr><td>QA / Datenqualität</td><td class="num">32</td><td class="num">70</td><td class="num">2.240 €</td></tr>
+      <tr><td>Deployment, Doku, Kuratierung</td><td class="num">25</td><td class="num">65</td><td class="num">1.625 €</td></tr>
+      <tr class="total"><td>Summe</td><td class="num">552 Std.</td><td></td><td class="num">~45.500 €</td></tr>
+    </tbody>
+  </table>
+  <p>Kalenderzeit: ein 3-Personen-Team (Data Engineer, Quant-Entwickler, Frontend-Entwickler) parallel arbeitend — rund <b>6 Wochen</b> bei realistischer Koordinationszeit. Ein Einzel-Generalist — etwa <b>4,5 Monate</b>.</p>
+
+  <h2>Qualitätsfaktor: Bugs, die sonst unentdeckt geblieben wären</h2>
+  <table>
+    <thead><tr><th>Bug</th><th>Betroffen</th><th>Typische Erkennungsdauer in Produktion</th></tr></thead>
+    <tbody>
+      <tr><td>Dividend-Yield 100x-Skalierungsfehler</td><td>Alle 3 Bilanz-Tools, jede Aktie mit Yield &lt;1%</td><td>Monate — fällt oft erst auf, wenn ein Kunde falsche Zahlen im Bericht sieht</td></tr>
+      <tr><td><code>period_days</code>-Parameter vom Server ignoriert</td><td>Live-Risk- und Macro-Tool, alle Charts liefen nur 1 Jahr statt der angeforderten Range</td><td>Wochen bis Monate — Silent Failure ohne Fehlermeldung</td></tr>
+      <tr><td>MDAX-Wikipedia-Daten veraltet (GEA Group, Scout24 bereits DAX)</td><td>Bilanz-Terminal Indexzuordnung</td><td>Nie automatisch entdeckt ohne manuellen Abgleich</td></tr>
+      <tr><td>Fresenius-Medical-Care-Ticker falsch (FRE statt FME)</td><td>MDAX-Konstituentenliste</td><td>Hätte falsche Firmendaten unter falschem Namen gecached</td></tr>
+      <tr><td>Cross-Listed-Exchange-Duplikate</td><td>Dividenden-Gapfill</td><td>Nie entdeckt ohne Symbol-Level-Audit; 10.198 redundante Checks gespart</td></tr>
+      <tr><td>EODHD-Proxy-Instabilität (500er vs. echte Nicht-Zahler)</td><td>Dividenden-Gapfill nach Ausfall</td><td>Hätte stillschweigend tausende echte Zahler als "keine Dividende" fehlklassifiziert</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Alle sechs wurden durch direkte Verifikation gegen reale Marktdaten gefunden — nicht durch Tests, sondern durch Gegenprüfung einzelner Werte gegen bekannte Realität (z. B. Roche-Ticker, Aktiensplit-Kontinuität, tatsächliche Indexzugehörigkeit).</p>
+
+  <h2>Einordnung</h2>
+  <p>Der eigentliche Unterschied ist nicht nur Tempo, sondern Vollständigkeit: ein reales Team hätte bei diesem Umfang typischerweise Kompromisse gemacht — weniger Länder-Indizes, keine 5-Jahres-Kurshistorie, keine systematische Verifikation jeder einzelnen Kennzahl gegen echte Marktdaten. Die sechs gefundenen Bugs sind genau die Art von Fehlern, die in produktiven Fintech-Systemen oft monatelang unentdeckt bleiben, weil niemand jeden Wert einzeln gegen die Realität prüft. Parallel entstand am selben Tag zusätzlich ein unabhängiges 50-Themen-Glossar (312 Fachbegriffe) — hier nicht mitgerechnet, da inhaltlich außerhalb des Börsen-Stacks.</p>
+
+  <footer>Alle Stunden- und Kostenangaben sind Schätzungen basierend auf typischen Marktsätzen für vergleichbare Rollen, keine geprüften Werte. Kein Ersatz für ein tatsächliches Angebot.</footer>
+</div>
+<script>
+  (function(){
+    const KEY='genitusTheme:casestudy';
+    function applyTheme(t){ document.documentElement.classList.toggle('dark-theme', t==='dark'); localStorage.setItem(KEY,t); const btn=document.getElementById('themeToggleBtn'); if(btn) btn.textContent = t==='dark' ? '☀' : '🌙'; }
+    let saved = localStorage.getItem(KEY) || 'light';
+    applyTheme(saved);
+    document.getElementById('themeToggleBtn').addEventListener('click', function(){
+      applyTheme(document.documentElement.classList.contains('dark-theme') ? 'light' : 'dark');
+    });
+  })();
+</script>
+</body>
+</html>
