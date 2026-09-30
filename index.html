@@ -119,7 +119,7 @@
     </tbody>
   </table>
   <p class="note">Damit lief die komplette Bilanz/Macro/Score-Hälfte des Stacks — 21 Länder-Indizes, 1.447 Firmen, 5-Jahres-Kurshistorie, Zinskurve, FX, Rohstoffe — auf 0 € zusätzlichen Datenkosten. Einzige laufende Kosten waren die beiden ohnehin schon abonnierten Fixkosten, anteilig auf einen Tag heruntergerechnet.</p>
-  <p class="note">Aktive Nutzereingabe: ca. 1 Stunde. Ein Teil der Kalenderzeit ging jedoch für Warten drauf — auf den EODHD-Tages-Quota-Reset (100.000/100.000 API-Calls ausgeschöpft) und auf die Stabilisierung eines zeitweise instabilen EODHD-Proxys (HTTP-500-Fehler). Ohne diese Wartezeit wäre der Durchlauf entsprechend kürzer gewesen.</p>
+  <p class="note">Aktive Nutzereingabe: ca. 1 Stunde. Der EODHD-Nachmittagslimit wurde erreicht (100.000/100.000), danach musste bis zum Mitternacht-GMT-Reset gewartet werden — der Nutzer blieb wach und setzte die Arbeit nachts nach dem Reset fort. Über den Tag verteilt wurde die volle Tagesquota damit <b>zweimal komplett ausgeschöpft</b> (nachmittags vor dem Reset, dann erneut nachts/morgens durch den Dividenden-Gapfill) — <b>200.000 API-Calls gesamt</b>, belegt durch zwei EODHD-Dashboard-Screenshots. Die reale Kalenderzeit war dadurch deutlich länger als die aktive Eingabezeit.</p>
   <p><b>Verhältnis: ~56.100 € vs. ~1,27 € Fixkosten — Faktor ~44.200. Bei der Zeit: ~647 Std. vs. ~1 Std. aktive Eingabe — Faktor ~650.</b></p>
 
   <h2>Qualitätsfaktor: Bugs, die sonst unentdeckt geblieben wären</h2>
