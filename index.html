@@ -101,6 +101,21 @@
   </table>
   <p>Kalenderzeit: ein 3-Personen-Team (Data Engineer, Quant-Entwickler, Frontend-Entwickler) parallel arbeitend — rund <b>6 Wochen</b> bei realistischer Koordinationszeit. Ein Einzel-Generalist — etwa <b>4,5 Monate</b>.</p>
 
+  <h2>Realer Kostenvergleich: heutiger Ansatz</h2>
+  <p>Der obige Wert ist die Kosten-Baseline für ein klassisches Team. Was der heutige Aufbau tatsächlich gekostet hat:</p>
+  <table>
+    <thead><tr><th>Position</th><th>Kosten/Monat</th><th>Tagesanteil</th></tr></thead>
+    <tbody>
+      <tr><td>EODHD-Abo (Ticker- + Dividenden-Ökosystem)</td><td class="num">20 €</td><td class="num">0,67 €</td></tr>
+      <tr><td>Yahoo Finance via StockSentinel-Proxy (Bilanz, Macro, Score-vs-Performance)</td><td class="num">0 € — pro bono</td><td class="num">0,00 €</td></tr>
+      <tr><td>Claude Code-Abo</td><td class="num">18 €</td><td class="num">0,60 €</td></tr>
+      <tr class="total"><td colspan="2">Summe</td><td class="num">~1,27 €</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Damit lief die komplette Bilanz/Macro/Score-Hälfte des Stacks — 21 Länder-Indizes, 1.447 Firmen, 5-Jahres-Kurshistorie, Zinskurve, FX, Rohstoffe — auf 0 € zusätzlichen Datenkosten. Einzige laufende Kosten waren die beiden ohnehin schon abonnierten Fixkosten, anteilig auf einen Tag heruntergerechnet.</p>
+  <p class="note">Aktive Nutzereingabe: ca. 1 Stunde. Ein Teil der Kalenderzeit ging jedoch für Warten drauf — auf den EODHD-Tages-Quota-Reset (100.000/100.000 API-Calls ausgeschöpft) und auf die Stabilisierung eines zeitweise instabilen EODHD-Proxys (HTTP-500-Fehler). Ohne diese Wartezeit wäre der Durchlauf entsprechend kürzer gewesen.</p>
+  <p><b>Verhältnis: ~45.500 € vs. ~1,27 € Fixkosten — Faktor ~35.900. Bei der Zeit: ~552 Std. vs. ~1 Std. aktive Eingabe — Faktor ~550.</b></p>
+
   <h2>Qualitätsfaktor: Bugs, die sonst unentdeckt geblieben wären</h2>
   <table>
     <thead><tr><th>Bug</th><th>Betroffen</th><th>Typische Erkennungsdauer in Produktion</th></tr></thead>
