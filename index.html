@@ -46,7 +46,7 @@
 <div class="main">
   <div class="asof">Stand: 30. September 2026</div>
   <h1>GENITUS Stack — Case Study: 1-Tages-Build vs. klassisches Team</h1>
-  <div class="lead">In einem einzigen Arbeitstag (~10 Stunden) entstand aus einem bereits vorhandenen Ticker-Terminal ein kompletter <b>17-Tool-Finanzanalyse-Stack</b> mit eigener Daten-Infrastruktur. Eine vergleichbare menschliche Umsetzung hätte nach der Schätzung unten <b>475–630 Personenstunden</b> und <b>40.000–50.000 €</b> gekostet.</div>
+  <div class="lead">In einem einzigen Arbeitstag (~10 Stunden) entstand aus einem bereits vorhandenen Ticker-Terminal ein kompletter <b>17-Tool-Finanzanalyse-Stack</b> mit eigener Daten-Infrastruktur. Eine vergleichbare menschliche Umsetzung hätte nach der Schätzung unten <b>647 Personenstunden</b> und <b>~56.100 €</b> gekostet.</div>
 
   <h2>Was heute entstanden ist</h2>
   <table>
@@ -81,9 +81,12 @@
       <tr><td>Data Engineer</td><td>83-Börsen Ticker-Cache, Dividenden-Scan (60.000+ Zahler über mehrere Gap-Fill-Runden), Financials-Batch (1.447 Firmen × 21 Indizes), 5-Jahres-Kurshistorie (1.424 Firmen), 21 Wikipedia-Index-Scraper inkl. Datenbereinigung</td><td class="num">140–180</td></tr>
       <tr><td>Quant-/Fintech-Entwickler</td><td>Portierung Sharpe/Sortino/VaR/Drawdown, Health-Score (5 gewichtete Sub-Scores), Dividend-Quality-Score, Chowder Number, DRIP-Simulation, Pearson-Korrelation, Breakeven-Proxy</td><td class="num">70–100</td></tr>
       <tr><td>Frontend-/Product-Entwickler</td><td>17 eigenständige, responsive Single-Page-Tools mit Charts, Sortier-Tabellen, Dark/Light-Theme, PWA-Workshell</td><td class="num">220–280</td></tr>
+      <tr><td>Finanzanalyst (CFA-Niveau)</td><td>Methodik-Definition und Validierung: Score-Gewichtungen, Ratio-Schwellenwerte, Sektor-Vergleichslogik, Plausibilitätsprüfung aller Kennzahlen gegen reale Marktkenntnis</td><td class="num">40–60</td></tr>
+      <tr><td>Compliance/Legal (WpHG/MAR)</td><td>Prüfung aller kundenseitigen Formulierungen (Fact-Sheet, Income-Goal, Compare) auf Anlageberatungs-Abgrenzung, Disclaimer-Texte</td><td class="num">15–25</td></tr>
+      <tr><td>Fachberater/Domain-Stakeholder</td><td>Anforderungsdefinition aus Berater-Perspektive, Abnahme-Tests mit realen Kundenszenarien</td><td class="num">20–30</td></tr>
       <tr><td>QA / Datenqualität</td><td>Verifikation aller Kennzahlen gegen reale Marktdaten, Aufdeckung der 6 Bugs unten</td><td class="num">25–40</td></tr>
       <tr><td>Deployment, Doku, Kuratierung</td><td>17 Repositories + Hosting, Navigation, Datenfluss-Dokumentation</td><td class="num">20–30</td></tr>
-      <tr class="total"><td colspan="2">Summe</td><td class="num">475–630 Std.</td></tr>
+      <tr class="total"><td colspan="2">Summe</td><td class="num">~647 Std.</td></tr>
     </tbody>
   </table>
 
@@ -94,9 +97,12 @@
       <tr><td>Data Engineer</td><td class="num">160</td><td class="num">85</td><td class="num">13.600 €</td></tr>
       <tr><td>Quant-/Fintech-Entwickler</td><td class="num">85</td><td class="num">110</td><td class="num">9.350 €</td></tr>
       <tr><td>Frontend-/Product-Entwickler</td><td class="num">250</td><td class="num">75</td><td class="num">18.750 €</td></tr>
+      <tr><td>Finanzanalyst (CFA-Niveau)</td><td class="num">50</td><td class="num">115</td><td class="num">5.750 €</td></tr>
+      <tr><td>Compliance/Legal (WpHG/MAR)</td><td class="num">20</td><td class="num">140</td><td class="num">2.800 €</td></tr>
+      <tr><td>Fachberater/Domain-Stakeholder</td><td class="num">25</td><td class="num">80</td><td class="num">2.000 €</td></tr>
       <tr><td>QA / Datenqualität</td><td class="num">32</td><td class="num">70</td><td class="num">2.240 €</td></tr>
       <tr><td>Deployment, Doku, Kuratierung</td><td class="num">25</td><td class="num">65</td><td class="num">1.625 €</td></tr>
-      <tr class="total"><td>Summe</td><td class="num">552 Std.</td><td></td><td class="num">~45.500 €</td></tr>
+      <tr class="total"><td>Summe</td><td class="num">647 Std.</td><td></td><td class="num">~56.100 €</td></tr>
     </tbody>
   </table>
   <p>Kalenderzeit: ein 3-Personen-Team (Data Engineer, Quant-Entwickler, Frontend-Entwickler) parallel arbeitend — rund <b>6 Wochen</b> bei realistischer Koordinationszeit. Ein Einzel-Generalist — etwa <b>4,5 Monate</b>.</p>
@@ -114,7 +120,7 @@
   </table>
   <p class="note">Damit lief die komplette Bilanz/Macro/Score-Hälfte des Stacks — 21 Länder-Indizes, 1.447 Firmen, 5-Jahres-Kurshistorie, Zinskurve, FX, Rohstoffe — auf 0 € zusätzlichen Datenkosten. Einzige laufende Kosten waren die beiden ohnehin schon abonnierten Fixkosten, anteilig auf einen Tag heruntergerechnet.</p>
   <p class="note">Aktive Nutzereingabe: ca. 1 Stunde. Ein Teil der Kalenderzeit ging jedoch für Warten drauf — auf den EODHD-Tages-Quota-Reset (100.000/100.000 API-Calls ausgeschöpft) und auf die Stabilisierung eines zeitweise instabilen EODHD-Proxys (HTTP-500-Fehler). Ohne diese Wartezeit wäre der Durchlauf entsprechend kürzer gewesen.</p>
-  <p><b>Verhältnis: ~45.500 € vs. ~1,27 € Fixkosten — Faktor ~35.900. Bei der Zeit: ~552 Std. vs. ~1 Std. aktive Eingabe — Faktor ~550.</b></p>
+  <p><b>Verhältnis: ~56.100 € vs. ~1,27 € Fixkosten — Faktor ~44.200. Bei der Zeit: ~647 Std. vs. ~1 Std. aktive Eingabe — Faktor ~650.</b></p>
 
   <h2>Qualitätsfaktor: Bugs, die sonst unentdeckt geblieben wären</h2>
   <table>
