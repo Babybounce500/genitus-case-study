@@ -44,9 +44,9 @@
   <button id="themeToggleBtn" title="Toggle theme">🌙</button>
 </header>
 <div class="main">
-  <div class="asof">Stand: 30. September 2026</div>
-  <h1>GENITUS Stack — Case Study: 1-Tages-Build vs. klassisches Team</h1>
-  <div class="lead">In einem einzigen Arbeitstag (~10 Stunden) entstand aus einem bereits vorhandenen Ticker-Terminal ein kompletter <b>17-Tool-Finanzanalyse-Stack</b> mit eigener Daten-Infrastruktur. Eine vergleichbare menschliche Umsetzung hätte nach der Schätzung unten <b>647 Personenstunden</b> und <b>~56.100 €</b> gekostet.</div>
+  <div class="asof">Stand: 7. Oktober 2026 (Ersterstellung 30. September 2026, seitdem erweitert)</div>
+  <h1>GENITUS Stack — Case Study: 1-Tages-Build + Erweiterung vs. klassisches Team</h1>
+  <div class="lead">In einem einzigen Arbeitstag (~10 Stunden) entstand aus einem bereits vorhandenen Ticker-Terminal ein kompletter <b>17-Tool-Finanzanalyse-Stack</b> mit eigener Daten-Infrastruktur. Eine vergleichbare menschliche Umsetzung hätte nach der Schätzung unten <b>647 Personenstunden</b> und <b>~56.100 €</b> gekostet. In vier weiteren Sessions (1.–7. Oktober) wuchs der Stack auf <b>28 Tools</b> — plus eine zweite, groß angelegte Live-Validierungsrunde, die zwei systemische Bugs in der bereits produktiven Datenbasis aufdeckte (siehe unten).</div>
 
   <h2>Was heute entstanden ist</h2>
   <table>
@@ -68,10 +68,30 @@
       <tr><td>Sektor-Heatmap</td><td>Fundamentaldaten</td><td>Ländervergleich von Bewertung und Gesundheit nach Sektor</td></tr>
       <tr><td>Score vs. Performance</td><td>Quant</td><td>Korrelation Health-Score ↔ 5-Jahres-Gesamtrendite, ~1.424 Firmen</td></tr>
       <tr><td>Macro / Yield-Curve</td><td>Makro</td><td>Zinskurve, Spreads, Bond-ETFs, FX, Rohstoffe</td></tr>
-      <tr><td>Workshell (PWA)</td><td>Infrastruktur</td><td>Vereinheitlichte Tab-Oberfläche für alle 16 Tools</td></tr>
+      <tr><td>Workshell (PWA)</td><td>Infrastruktur</td><td>Vereinheitlichte Tab-Oberfläche, an diesem Tag für die ersten 16 Tools (seitdem auf 28 erweitert, siehe unten)</td></tr>
     </tbody>
   </table>
   <p class="note">Dazu die zugrunde liegende Daten-Infrastruktur: ein 233K-Zeilen Ticker-Cache über 83 Börsen, ein Dividenden-Cache mit über 60.000 bestätigten Zahlern und 1 Mio.+ Einzelzahlungen, ein Financials-Batch über 1.447 Firmen in 21 Länder-Indizes und eine 5-Jahres-Kurshistorie für 1.424 Firmen — aufgebaut per resumable Batch-Skripten mit Circuit-Breaker und Wikipedia-Scraping für die Index-Konstituenten.</p>
+
+  <h2>Erweiterung (1.–7. Oktober): 11 weitere Tools</h2>
+  <p>Vier zusätzliche Sessions, alle auf Basis der bereits bestehenden 1,6-Mio.-Zeilen-Dividendenhistorie — <b>keine neuen Live-API-Calls</b> für die meisten der folgenden Tools, reine Cache-Auswertung plus einmalige Zusatz-Batch-Skripte.</p>
+  <table>
+    <thead><tr><th>Tool</th><th>Kategorie</th><th>Kernfunktion</th></tr></thead>
+    <tbody>
+      <tr><td>Dividend Aristocrats</td><td>Analyse</td><td>Global 10+/20+/25+ Jahre <b>strikt steigende</b> Dividende, 1.673 Firmen</td></tr>
+      <tr><td>Neue-Zahler-Radar</td><td>Analyse</td><td>Erstdividende in den letzten 12 Monaten, 3.186 Firmen, Momentum-Indikator</td></tr>
+      <tr><td>Dividend-CAGR-Rechner</td><td>Analyse</td><td>5/10/20-Jahres-Wachstumsrate, 38.809 Firmen</td></tr>
+      <tr><td>"Hätte ich gekauft"-Backtester</td><td>Kundenberatung</td><td>Dip-Kauf vs. Einmalanlage vs. Sparplan + 5J-Entnahme-Stresstest (historischer Rolling-Window-Replay)</td></tr>
+      <tr><td>Sektor-Rotations-Signal</td><td>Makro</td><td>Ø Dividendenrendite je Sektor über Zeit, S&amp;P-500-Scope</td></tr>
+      <tr><td>Dividenden-Markov &amp; Risk Lab</td><td>Quant</td><td>Zustands-Kette (Increase/Flat/Cut/Suspended) + Monte-Carlo-Simulation, Kaplan-Meier-Hazard-Kurve, Portfolio-Klumpenrisiko</td></tr>
+      <tr><td>Client-Dossier-Generator</td><td>Kundenberatung</td><td>Druckbares Ein-Seiter-Dossier: Bilanz + Dividende + CAGR + Markov-Risiko</td></tr>
+      <tr><td>Dividenden-Wachstums-Analyse</td><td>Analyse</td><td>Konsistenz-Score (CoV) + Momentum-Ranking der Erhöhungsraten</td></tr>
+      <tr><td>Dividenden-Kalender</td><td>Analyse</td><td>Projizierte nächste Zahltermine + Saisonalität nach Börse</td></tr>
+      <tr><td>Screening-Suite</td><td>Analyse</td><td>Dividenden-Fallen-Detektor + Kurs-Divergenz-Scanner + Safety Score</td></tr>
+      <tr><td>Globale Dividenden-Heatmap</td><td>Analyse</td><td>Rendite/Wachstum/Risiko aggregiert nach Börse, 60+ Märkte</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Neue Datensätze: <code>dividend-markov-data.json</code> (59.456 Firmen klassifiziert, 644.109 Jahr-zu-Jahr-Übergänge), <code>dividend-hazard-data.json</code> (259.803 Streak-Verläufe, Kaplan-Meier), <code>growth-analysis-data.json</code>, <code>dividend-calendar-data.json</code>, <code>symbol-crossref.json</code> (Yahoo↔EODHD-Brücke, S&amp;P-500-Scope). Gesamtstack damit <b>28 Tools</b>.</p>
 
   <h2>Aufwandsschätzung nach Rolle</h2>
   <p class="note">Basierend auf typischen Projektlaufzeiten für vergleichbare Einzelkomponenten (ein poliertes Analyse-Dashboard: 3–5 Personentage; eine produktionsreife Batch-Pipeline mit Resume-Logik: 1–2 Personenwochen).</p>
@@ -107,6 +127,21 @@
   </table>
   <p>Kalenderzeit: ein 3-Personen-Team (Data Engineer, Quant-Entwickler, Frontend-Entwickler) parallel arbeitend — rund <b>6 Wochen</b> bei realistischer Koordinationszeit. Ein Einzel-Generalist — etwa <b>4,5 Monate</b>.</p>
 
+  <h2>Erweiterungsphase (1.–7. Oktober): eigener Aufwand, separat ausgewiesen</h2>
+  <p class="note">Bewusst <b>nicht</b> mit der Tag-1-Schätzung oben verschmolzen — andere Ausgangslage (Infrastruktur existierte schon), andere Rollenmischung (weniger Data-Engineering, mehr Quant/QA).</p>
+  <table>
+    <thead><tr><th>Rolle</th><th>Aufgaben</th><th>Std.</th><th>Satz</th><th>Kosten</th></tr></thead>
+    <tbody>
+      <tr><td>Frontend-/Quant-Entwickler</td><td>11 neue Tools inkl. Markov-Ketten-Engine, Monte-Carlo-Simulation, Kaplan-Meier-Hazard-Kurve, Safety-Score-Formel, CAGR/Konsistenz/Momentum-Logik</td><td class="num">160</td><td class="num">95 €</td><td class="num">15.200 €</td></tr>
+      <tr><td>Data Engineer</td><td>6 neue Datensätze (Markov, Hazard, Crossref, Growth-Analysis, Calendar) + Korrektur-Batch für die StreakYears-Spalte</td><td class="num">25</td><td class="num">85 €</td><td class="num">2.125 €</td></tr>
+      <tr><td>QA / Datenqualität</td><td>2 systemische Bugs über 2 Validierungsrunden gefunden, gegen 8 reale Testaktien verifiziert, in 18 Dateien gefixt</td><td class="num">40</td><td class="num">70 €</td><td class="num">2.800 €</td></tr>
+      <tr><td>Deployment, Doku</td><td>11 neue Repositories + mehrfache Redeploys bestehender Tools</td><td class="num">18</td><td class="num">65 €</td><td class="num">1.170 €</td></tr>
+      <tr class="total"><td colspan="3">Summe</td><td class="num">243 Std.</td><td class="num">~21.300 €</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Tatsächliche Kosten der Erweiterungsphase: ~5 aktive Tage × 1,27 €/Tag Fixkosten-Anteil ≈ <b>6,35 €</b>. Faktor dieser Phase allein: ~21.300 € / 6,35 € ≈ <b>3.350×</b> — kleiner als Tag 1 (44.200×), und das ist der eigentliche Punkt: Tag 1 baute die Infrastruktur von null, die Erweiterung nutzte sie nur noch. Genau dieser Rückgang zeigt, dass der Tag-1-Wert kein Zufallstreffer war, sondern echter struktureller Hebel aus wiederverwendbarer Infrastruktur.</p>
+  <p><b>Kombiniert (Tag 1 + Erweiterung): ~890 Std. Team-Aufwand, ~77.400 € Baseline, gegen ~7,60 € tatsächliche Fixkosten über die ganze Periode — Faktor ~10.180×.</b></p>
+
   <h2>Realer Kostenvergleich: heutiger Ansatz</h2>
   <p>Der obige Wert ist die Kosten-Baseline für ein klassisches Team. Was der heutige Aufbau tatsächlich gekostet hat:</p>
   <table>
@@ -132,12 +167,14 @@
       <tr><td>Fresenius-Medical-Care-Ticker falsch (FRE statt FME)</td><td>MDAX-Konstituentenliste</td><td>Hätte falsche Firmendaten unter falschem Namen gecached</td></tr>
       <tr><td>Cross-Listed-Exchange-Duplikate</td><td>Dividenden-Gapfill</td><td>Nie entdeckt ohne Symbol-Level-Audit; 10.198 redundante Checks gespart</td></tr>
       <tr><td>EODHD-Proxy-Instabilität (500er vs. echte Nicht-Zahler)</td><td>Dividenden-Gapfill nach Ausfall</td><td>Hätte stillschweigend tausende echte Zahler als "keine Dividende" fehlklassifiziert</td></tr>
+      <tr><td><b>CachedYieldPct-Ausreißer</b> (stale Near-Null-Cache-Kurs → Renditen bis 2.586.667%)</td><td>15 Dateien: alle "nach Rendite sortieren"-Ansichten</td><td>Monate — wäre erst aufgefallen, wenn ein Berater versehentlich eine Mikrocap-Ruine ganz oben in der Yield-Liste präsentiert</td></tr>
+      <tr><td><b>StreakYears/StreakDirection systemisch falsch</b> (laufendes Jahr nie ausgeschlossen + Aussetzungs-Lücken ignoriert)</td><td>9 Tools direkt + 3 mit eigener CAGR-Logik (Compare, Growth-Screener, Institutional); 39.084 von 63.076 Zeilen betroffen (62%)</td><td>Hätte nie auffallen müssen — Coca-Cola zeigte "1 Jahr, sinkend" statt der echten 56 Jahre, AT&amp;T nicht unterscheidbar von einem echten Dividend King</td></tr>
     </tbody>
   </table>
-  <p class="note">Alle sechs wurden durch direkte Verifikation gegen reale Marktdaten gefunden — nicht durch Tests, sondern durch Gegenprüfung einzelner Werte gegen bekannte Realität (z. B. Roche-Ticker, Aktiensplit-Kontinuität, tatsächliche Indexzugehörigkeit).</p>
+  <p class="note">Die ersten sechs wurden am Tag 1 gefunden, die letzten zwei erst durch eine zweite, dedizierte Live-Validierungsrunde (5.–7. Oktober) mit konkreten, bekannten Testaktien (Coca-Cola, Johnson &amp; Johnson, Apple, Hormel, AT&amp;T u. a.) gegen die tatsächlich live deployten Daten — nicht lokale Kopien. Alle acht durch direkte Verifikation gegen reale Marktdaten und bekannte Unternehmens-Fakten gefunden, nicht durch automatisierte Tests. Der StreakYears-Bug ist der schwerwiegendste Fund der gesamten Session: er saß im originalen <code>gapfill.js</code>-Skript selbst (nicht in einem der neuen Tools) und verzerrte seit der allerersten Dividenden-Datenerhebung die mit Abstand prominenteste angezeigte Kennzahl in 9 von 11 älteren Tools.</p>
 
   <h2>Einordnung</h2>
-  <p>Der eigentliche Unterschied ist nicht nur Tempo, sondern Vollständigkeit: ein reales Team hätte bei diesem Umfang typischerweise Kompromisse gemacht — weniger Länder-Indizes, keine 5-Jahres-Kurshistorie, keine systematische Verifikation jeder einzelnen Kennzahl gegen echte Marktdaten. Die sechs gefundenen Bugs sind genau die Art von Fehlern, die in produktiven Fintech-Systemen oft monatelang unentdeckt bleiben, weil niemand jeden Wert einzeln gegen die Realität prüft. Parallel entstand am selben Tag zusätzlich ein unabhängiges 50-Themen-Glossar (312 Fachbegriffe) — hier nicht mitgerechnet, da inhaltlich außerhalb des Börsen-Stacks.</p>
+  <p>Der eigentliche Unterschied ist nicht nur Tempo, sondern Vollständigkeit: ein reales Team hätte bei diesem Umfang typischerweise Kompromisse gemacht — weniger Länder-Indizes, keine 5-Jahres-Kurshistorie, keine systematische Verifikation jeder einzelnen Kennzahl gegen echte Marktdaten. Die acht gefundenen Bugs sind genau die Art von Fehlern, die in produktiven Fintech-Systemen oft monatelang unentdeckt bleiben, weil niemand jeden Wert einzeln gegen die Realität prüft. Die zweite Validierungsrunde zeigt zusätzlich, warum einmalige QA nicht reicht: der StreakYears-Bug existierte bereits seit Tag 1, unsichtbar, bis jemand eine konkrete, bekannte Aktie (Coca-Cola) gezielt gegen ihre öffentlich bekannte 56-Jahres-Historie geprüft hat. Parallel entstand am selben Tag zusätzlich ein unabhängiges 50-Themen-Glossar (312 Fachbegriffe) — hier nicht mitgerechnet, da inhaltlich außerhalb des Börsen-Stacks.</p>
 
   <footer>Alle Stunden- und Kostenangaben sind Schätzungen basierend auf typischen Marktsätzen für vergleichbare Rollen, keine geprüften Werte. Kein Ersatz für ein tatsächliches Angebot.</footer>
 </div>
